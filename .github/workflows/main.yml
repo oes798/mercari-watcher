@@ -20,3 +20,4 @@ jobs:
           pip install -r requirements.txt
       - name: Run watcher
         run: python main.py
+# Just a small comment to trigger a push
