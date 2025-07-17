@@ -14,7 +14,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.10  # ← 여기 꼭 이렇게 바꾸세요!!
+          python-version: 3.10   # ✅ 반드시 이 버전이어야 작동해요
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run script
