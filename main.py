@@ -11,10 +11,10 @@ IMAGE_FOLDER = "reference_images"
 SIMILARITY_THRESHOLD = 5
 
 def fetch_mercari_results(keyword):
-    search_url = f"https://www.mercari.com/jp/search/?keyword={{keyword}}"
+    search_url = f"https://www.mercari.com/jp/search/?keyword={keyword}"
     headers = {
-    "User-Agent": "Mozilla/5.0"
-}
+        "User-Agent": "Mozilla/5.0"
+    }
     resp = requests.get(search_url, headers=headers)
     return resp.text
 
@@ -34,16 +34,17 @@ def is_similar(img1, img2):
         return False
 
 def send_alert(image_url, title):
-    content = f"🔔 **Possible Match Found**: {{title}}\n{{image_url}}"
+    content = f"🔔 **Possible Match Found**: {title}\n{image_url}"
     DiscordWebhook(url=WEBHOOK_URL, content=content).execute()
 
 def check_new_items():
     html = fetch_mercari_results(KEYWORD)
+    # This is dummy data for testing
     dummy_items = [
-        {{
+        {
             "title": "アバクロのニットテスト",
             "image": "https://static.mercdn.net/item/detail/orig/photos/m123456.jpg"
-        }}
+        }
     ]
     ref_images = [Image.open(os.path.join(IMAGE_FOLDER, f)) for f in os.listdir(IMAGE_FOLDER)]
     for item in dummy_items:
