@@ -12,9 +12,9 @@ SIMILARITY_THRESHOLD = 5
 
 def fetch_mercari_results(keyword):
     search_url = f"https://www.mercari.com/jp/search/?keyword={{keyword}}"
-    headers = {{
-        "User-Agent": "Mozilla/5.0"
-    }}
+    headers = {
+    "User-Agent": "Mozilla/5.0"
+}
     resp = requests.get(search_url, headers=headers)
     return resp.text
 
